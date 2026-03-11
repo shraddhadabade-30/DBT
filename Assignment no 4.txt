@@ -1,0 +1,19 @@
+SELECT Onum, Amt, Odate
+FROM Orders;
+
+SELECT *
+FROM Customers
+WHERE Snum = 1001;
+
+
+SELECT City, Sname, Snum, Comm
+FROM Salespeople;
+
+
+SELECT Rating, Cname
+FROM Customers
+WHERE City = 'San Jose';
+
+
+SELECT DISTINCT Snum
+FROM Orders;
