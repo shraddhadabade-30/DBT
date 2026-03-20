@@ -1,0 +1,91 @@
+
+
+create table inche(total_inch int, yard int ,feet int ,inche int );
+
+delimiter \\
+CREATE PROCEDURE convert_inches(IN num INT)
+BEGIN
+declare y int;
+declare f int;
+declare i int;
+declare rem int;
+
+set y = num DIV 36;
+set rem = num MOD 36;
+set f = rem DIV 12;
+set i = rem MOD 12;
+
+insert into table inche(total_inch, yard , feet ,inche)
+values (num , y,f,i);
+end \\
+delimiter ;
+
+call inches(800);
+
+------------------------------------------------------------------
+5. create table divcheck(num int , result varchar(40));
+
+delimiter \\
+create procedure checkdiv(in num int)
+begin 
+declare res varchar(30);
+if num MOD 5 = 0  then
+set res = 'Divisible by 5';
+else 
+set res ='Not divisible by 5';
+end if;
+insert into divcheck values (num, res);
+
+end \\
+delimiter ;
+
+================================================
+CREATE TABLE productcheck (
+    num1 FLOAT,
+    num2 FLOAT,
+    product FLOAT,
+    result VARCHAR(30)
+);
+
+DELIMITER //
+
+CREATE PROCEDURE checkproduct(IN a FLOAT, IN b FLOAT)
+BEGIN
+    DECLARE pro FLOAT;
+    DECLARE res VARCHAR(30);
+
+    SET prod = a * b;
+
+    IF pro >= 100 THEN
+        SET res = '>= 100';
+    ELSE
+        SET res = '< 100';
+    END IF;
+
+    INSERT INTO productcheck VALUES (a, b, pro, res);
+END //
+
+DELIMITER ;
+----------------------------------------------------------
+assignment no 2 
+
+1 . CREATE TABLE numbers (
+    num INT
+);
+
+INSERT INTO numbers VALUES (10), (19), (9), (20);
+
+delimietr \\
+create procedure checkno ()
+begin 
+declare x int ;
+ select num into x from numbers 
+if x between 1 and 10 then 
+select 'within range';
+else 
+select 'not in range';
+
+end if 
+
+end \\
+delimiter ;
